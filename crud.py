@@ -24,7 +24,7 @@ def get_contacts(db:Session, skip: int = 0, limit: int = 100):
 
 def create_user_contacts(db: Session, contact:schemas.ContactCreate, user_id:int):
     db_contact = models.Contacts(**contact.dict(), owner_id=user_id)
-    db.add(db_item)
+    db.add(db_contact)
     db.commit()
-    db.refresh(db_item)
-    return db_item
+    db.refresh(db_contact)
+    return db_contact
