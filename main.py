@@ -110,7 +110,9 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 def create_item(user_id:int, contact:schemas.ContactCreate, db: Session= Depends(get_db)):
     return crud.create_user_contacts(db, contact, user_id)
 
-
+@app.delete('/contacts/delete/{contact_id}')
+def delete_contacts(contact_id:int, db:Session = Depends(get_db)):
+    return crud.delete_contacts(db, contact_id)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=int(os.environ.get("PORT")), log_level="info")
