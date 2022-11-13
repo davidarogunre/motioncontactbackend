@@ -23,7 +23,7 @@ def get_contacts(db:Session, skip: int = 0, limit: int = 100):
     return db.query(models.Contacts).offset(skip).limit(limit)
 
 def get_contact(db:Session, contact_id: int):
-    return db.query(models.Contact).filter(models.Contacts.id == contacts_id).first()
+    return db.query(models.Contacts).filter(models.Contacts.id == contacts_id).first()
 
 def create_user_contacts(db: Session, contact:schemas.ContactCreate, user_id:int):
     db_contact = models.Contacts(**contact.dict(), owner_id=user_id)

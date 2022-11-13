@@ -111,7 +111,7 @@ def create_item(user_id:int, contact:schemas.ContactCreate, db: Session= Depends
     return crud.create_user_contacts(db, contact, user_id)
 
 @app.delete('/contacts/delete/{contact_id}')
-def delete_contacts(contact_id:int, db:Session = Depends(get_db)):
+def delete_contacts_from_user(contact_id:int, db:Session = Depends(get_db)):
     return crud.delete_contacts(db, contact_id)
 
 if __name__ == "__main__":
